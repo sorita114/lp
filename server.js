@@ -1,28 +1,28 @@
-var http = require('http'),
+var express = require( 'express' ),
+    http = require( 'http' ),
     fs = require( 'fs' ),
     path = require( 'path' ),
-    ext = /[\w\d_-]+\.[\w\d]+$/;
+    app = express(),
+    server = http.createServer( app );
 
-http.createServer( function ( req, res ){
-  if( req.url === '/' ) {
-    res.writeHead( 200 , { 'Content-Type' : 'text/html' });
-    fs.createReadStream( 'index.html' ).pipe( res );
-  } else if( ext.test( req.url ) ){
-    fs.exist( path.join( _dirname, req.url ) , isExist );
-  } else {
+app.use( '/static_bower' , express.static( __dirname + '/bower_components' ));
+app.use( '/static_npm' , express.static( __dirname + '/node_modules') );
+app.use( '/static_app' , express.static( __dirname + '/app') );
+app.use( '/static_assets' , express.static( __dirname + '/assets' ));
 
-  }
+app.get( '/' , function ( req, res ) {
+  fs.readFile( 'index.html' , function( error , data ){
+    if( error ){
+      console.log( error );
+    } else {
+      res.writeHead( 200 , { 'Content-Type' : 'text/html' });
+      res.end( data );
+    }
+  });
+});
 
-}).listen( 1337 , '127.0.0.1' );
-console.log( 'Server running at http://127.0.0.1:1337' );
 
-//////
-function isExist( exist ) {
-  if( exists ) {
-    res.writeHead( 200, {'Content-Type' : 'text/html' });
-    fs.createReadStream( 'index.html' ).pipe( res );
-  } else {
-    res.writeHead( 404 , {'Content-Type' : 'text/html' });
-    fs.createReadStream( '404.html' ).pipe( res );
-  }
-}
+server.listen( 8000 , function(){
+  console.log( __dirname );
+  console.log( 'Server running at http://localhost:8000' );
+});

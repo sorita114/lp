@@ -33,13 +33,13 @@
   },
   "homepage": "https://github.com/sorita114/lp",
   "paths" : {
-    "app" : "./app",
-    "assets" : "./assets",
-    "assets-css" : "./assets/css",
-    "assets-img" : "./assets/img",
-    "assets-js" : "./assets/js",
-    "assets-libs" : "./assets/libs",
-    "app-shared" : "./app/shared",
-    "app-components" : "./app/components"
+    "app" : "app",
+    "assets" : "assets",
+    "assets-css" : "assets/css",
+    "assets-img" : "assets/img",
+    "assets-js" : "assets/js",
+    "assets-libs" : "assets/libs",
+    "app-shared" : "app/shared",
+    "app-components" : "app/components"
   }
 }
