@@ -10,19 +10,10 @@ app.use( '/static_npm' , express.static( __dirname + '/node_modules') );
 app.use( '/static_app' , express.static( __dirname + '/app') );
 app.use( '/static_assets' , express.static( __dirname + '/assets' ));
 
-app.get( '/' , function ( req, res ) {
-  fs.readFile( 'index.html' , function( error , data ){
-    if( error ){
-      console.log( error );
-    } else {
-      res.writeHead( 200 , { 'Content-Type' : 'text/html' });
-      res.end( data );
-    }
-  });
+app.all( '/*' , function ( req, res ) {
+  res.sendFile( 'index.html' , { root : __dirname });
 });
 
-
 server.listen( 8000 , function(){
-  console.log( __dirname );
   console.log( 'Server running at http://localhost:8000' );
 });

@@ -1,12 +1,18 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" ng-app="app">
 <head>
   <meta charset="UTF-8">
-  <title>Index</title>
+  <title>LOL Projects</title>
 </head>
-<body>
-  <script src="/static_bower/angular/angular.js"></script>
-  <script src="/static_app/app.module.js"></script>
+<body ng-controller="AppController as appCtrl">
+  <div ui-view>
+    <div>Index</div>
+  </div>
+  <script src="/static_bower/angular/angular.min.js"></script>
+  <script src="/static_bower/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script src="/static_bower/jquery/dist/jquery.min.js"></script>
   <script src="/static_app/app.routes.js"></script>
+  <script src="/static_app/app.module.js"></script>
+  <script src="/static_app/dist/mainController.js"></script>
 </body>
 </html>

@@ -35,11 +35,11 @@
   "paths" : {
     "app" : "app",
     "assets" : "assets",
-    "assets-css" : "assets/css",
-    "assets-img" : "assets/img",
-    "assets-js" : "assets/js",
-    "assets-libs" : "assets/libs",
-    "app-shared" : "app/shared",
-    "app-components" : "app/components"
+    "assetsCss" : "assets/css",
+    "assetsImg" : "assets/img",
+    "assetsJs" : "assets/js",
+    "assetsLibs" : "assets/libs",
+    "appShared" : "app/shared",
+    "appComponents" : "app/components"
   }
 }

@@ -5,9 +5,9 @@ module.exports = function ( grunt ) {
       complied : {
         expand : true,
         flatten : true,
-        cwd : '<%= pkg.paths.app %>',
-        src : ['*.coffee'],
-        dest : '<%= pkg.paths.app %>/dest',
+        cwd : '<%= pkg.paths.appComponents %>',
+        src : ['**/*.coffee'],
+        dest : '<%= pkg.paths.app %>/dist/',
         ext : '.js'
       }
     }
@@ -16,5 +16,5 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks( 'grunt-contrib-coffee' );
 
   grunt.registerTask( 'build' , ['coffee'] );
-  grunt.registerTask( 'compile' , ['coffee'] ); //build all, minify, concat
+  //grunt.registerTask( 'compile' , ['coffee'] ); //build all, minify, concat
 };
