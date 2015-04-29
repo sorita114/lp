@@ -13,8 +13,8 @@
 
     $stateProvider
       .state( 'main' , {
-        url : '/main',
-        templateUrl : '/static_app/components/main/main.html',
+        url : '/',
+        templateUrl : '/static_app/components/main/view.html',
         controller : 'MainController',
         controllerAs : 'mainCtrl'
       });
