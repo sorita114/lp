@@ -8,7 +8,12 @@ var express = require( 'express' ),
 app.use( '/static_bower' , express.static( __dirname + '/bower_components' ));
 app.use( '/static_npm' , express.static( __dirname + '/node_modules') );
 app.use( '/static_app' , express.static( __dirname + '/app') );
-app.use( '/static_assets' , express.static( __dirname + '/assets' ));
+app.use( '/static_assets' , function( req , res, next ) {
+  var fileUrl = req.url;
+
+  res.sendFile( fileUrl , { root : __dirname + '/asseets' });
+
+});
 
 app.all( '/*' , function ( req, res ) {
   res.sendFile( 'index.html' , { root : __dirname });
