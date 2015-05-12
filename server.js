@@ -47,8 +47,7 @@ router.get( '/' , function( req, res ) {
 
 // on routes that end in /champion
 // -----------------------------------------------------------------------------------------
-router.route( '/champion' )
-    .get( function( request , response ) {
+router.get( '/v1/champions' , function( request , response ) {
         https.get( 'https://global.api.pvp.net/api/lol/static-data/kr/v1.2/champion?api_key=96a61826-7b3a-4e33-94c5-09d33230dc02' , function( res ){
             var chunks = '';
 
@@ -65,6 +64,27 @@ router.route( '/champion' )
             console.log( 'Got error : ' , e );
         });
     });
+
+router.get( '/v1/champion/:id' , function( request , response ) {
+    var id = request.params.id;
+
+    https.get( 'https://global.api.pvp.net/api/lol/static-data/kr/v1.2/champion/'+ id +'?api_key=96a61826-7b3a-4e33-94c5-09d33230dc02' , function( res ){
+        var chunks = '';
+
+        res.on( 'data' , function( d ) {
+
+            chunks = chunks + d;
+
+        }).on( 'end' , function() {
+
+            response.json( JSON.parse( chunks ) );
+        });
+
+    }).on( 'error' , function( e ) {
+        console.log( 'Got error : ' , e );
+    });
+});
+
 
 
 // REGISTER OUR ROUTES------------------------
