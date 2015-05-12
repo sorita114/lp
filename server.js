@@ -1,4 +1,3 @@
-var appKey = '96a61826-7b3a-4e33-94c5-09d33230dc02';
 // BASE SETUP
 // ======================================================================================
 
@@ -6,6 +5,7 @@ var appKey = '96a61826-7b3a-4e33-94c5-09d33230dc02';
 var express = require( 'express' ),     // call express
     app = express(),                    // defined our app using express
     https = require('https'),
+    globals = require( './asseets/js/global.js')(),
     bodyParser = require( 'body-parser' );
 
 // configure app to use bodyParser()
@@ -48,27 +48,38 @@ router.get( '/' , function( req, res ) {
 // on routes that end in /champion
 // -----------------------------------------------------------------------------------------
 router.get( '/v1/champions' , function( request , response ) {
-        https.get( 'https://global.api.pvp.net/api/lol/static-data/kr/v1.2/champion?api_key=96a61826-7b3a-4e33-94c5-09d33230dc02' , function( res ){
-            var chunks = '';
+    var appkey = globals.get( 'appkey' ),
+        apiDomain = globals.get( 'apiUrl' ),
+        languageCode = globals.get( 'lang' ),
+        apiVersion = globals.get( 'version' ),
+        url = apiDomain + '/' + languageCode + '/' + apiVersion + '/champion?api_key=' + appkey;
 
-            res.on( 'data' , function( d ) {
+    https.get( url , function( res ){
+        var chunks = '';
 
-                chunks = chunks + d;
+        res.on( 'data' , function( d ) {
 
-            }).on( 'end' , function() {
+            chunks = chunks + d;
 
-                response.json( JSON.parse( chunks ) );
-            });
+        }).on( 'end' , function() {
 
-        }).on( 'error' , function( e ) {
-            console.log( 'Got error : ' , e );
+            response.json( JSON.parse( chunks ) );
         });
+
+    }).on( 'error' , function( e ) {
+        console.log( 'Got error : ' , e );
     });
+});
 
 router.get( '/v1/champion/:id' , function( request , response ) {
-    var id = request.params.id;
+    var id = request.params.id,
+        appkey = globals.get( 'appkey' ),
+        apiDomain = globals.get( 'apiUrl' ),
+        languageCode = globals.get( 'lang' ),
+        apiVersion = globals.get( 'version' ),
+        url = apiDomain + '/' + languageCode + '/' + apiVersion + '/champion/' + id + '?api_key=' + appkey;
 
-    https.get( 'https://global.api.pvp.net/api/lol/static-data/kr/v1.2/champion/'+ id +'?api_key=96a61826-7b3a-4e33-94c5-09d33230dc02' , function( res ){
+    https.get( url , function( res ){
         var chunks = '';
 
         res.on( 'data' , function( d ) {
