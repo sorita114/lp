@@ -77,7 +77,7 @@ router.get( '/v1/champion/:id' , function( request , response ) {
         apiDomain = globals.get( 'apiUrl' ),
         languageCode = globals.get( 'lang' ),
         apiVersion = globals.get( 'version' ),
-        url = apiDomain + '/' + languageCode + '/' + apiVersion + '/champion/' + id + '?api_key=' + appkey;
+        url = apiDomain + '/' + languageCode + '/' + apiVersion + '/champion/' + id + '?champData=all&api_key=' + appkey;
 
     https.get( url , function( res ){
         var chunks = '';

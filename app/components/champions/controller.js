@@ -3,15 +3,19 @@
 
   angular
     .module( 'app' )
-    .controller( 'ChampionController' , ChampionController );
+    .controller( 'ListController' , ListController )
+    .controller( 'viewController' , viewController );
 
     //app controller
 
-  function ChampionController( getChampion ) {
+  function ListController( getChampion ) {
       this.defaults = {
-          champions : getChampion
+          list : getChampion
       };
-
-      console.log( this.defaults.champions );
   }
+
+  function viewController( getChampion ) {
+      this.item = getChampion;
+  }
+
 })();

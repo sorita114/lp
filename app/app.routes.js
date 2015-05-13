@@ -20,15 +20,26 @@
       })
       .state( 'champions', {
          url : '/champions',
-         templateUrl : '/static_app/components/champions/view.html',
-         controller : 'ChampionController',
-         controllerAs : 'championCtrl',
+         templateUrl : '/static_app/components/champions/list.html',
+         controller : 'ListController',
+         controllerAs : 'listCtrl',
          resolve : {
              getChampion : function( ChampionFactory ) {
                  return ChampionFactory.get();
              }
          }
-     });
+     })
+     .state( 'champion', {
+        url : '/champion/:id',
+        templateUrl : '/static_app/components/champions/view.html',
+        controller : 'viewController',
+        controllerAs : 'viewCtrl',
+        resolve : {
+            getChampion : function( ChampionFactory , $stateParams ) {
+                return ChampionFactory.get( $stateParams.id );
+            }
+        }
+    })
   }
 
 })();

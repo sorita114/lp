@@ -1,0 +1,12 @@
+<div>champions - list</div>
+<ul>
+    <li ng-repeat="item in listCtrl.defaults.list.data">
+        <a href="#/champion/{{item.id}}">
+            <img ng-src="http://ddragon.leagueoflegends.com/cdn/5.2.1/img/champion/{{item.key}}.png" />
+            <span>id : {{ item.id }} / </span>
+            <span>key : {{ item.key }} / </span>
+            <span>name : {{ item.name }} / </span>
+            <span>title : {{ item.title }} / </span>
+        </a>
+    </li>
+</ul>
