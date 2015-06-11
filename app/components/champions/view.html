@@ -1,0 +1,71 @@
+<a href="#/champions">go to list</a>
+<div>
+    <h1>{{ viewCtrl.item.name }}</h1>
+</div>
+<div>
+    <img ng-src="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/{{viewCtrl.item.key}}_0.jpg"/>
+</div>
+<h2>AllyTips</h2>
+<div>
+    <ul>
+        <li ng-repeat="atips in viewCtrl.item.allytips">{{atips}}</li>
+    </ul>
+</div>
+<h2>EnemyTips</h2>
+<div>
+    <ul>
+        <li ng-repeat="etips in viewCtrl.item.enemytips">{{etips}}</li>
+    </ul>
+</div>
+<h2>Info</h2>
+<div>
+    <p>
+        <span>attack : {{ viewCtrl.item.info.attack }} || </span>
+        <span>defnese : {{ viewCtrl.item.info.defense }} || </span>
+        <span>difficulty : {{ viewCtrl.item.info.difficulty }} ||</span>
+        <span>magic : {{ viewCtrl.item.info.magic }}</span>
+    </p>
+</div>
+<h2>lore</h2>
+<div>
+    <p>{{ viewCtrl.item.lore }}</p>
+</div>
+<h2>partype</h2>
+<p>{{ viewCtrl.item.partype }}</p>
+<h2>Passive</h2>
+<div>
+    <p>
+        <img ng-src="http://ddragon.leagueoflegends.com/cdn/5.2.1/img/passive/{{ viewCtrl.item.passive.image.full }}" alt="{{ viewCtrl.item.passive.name }}">
+        <span>{{ viewCtrl.item.passive.description }}</span>
+    </p>
+    <p>{{ viewCtrl.item.passive.sanitizedDescription }}</p>
+</div>
+<h2>skins</h2>
+<div>
+    <ul>
+        <li ng-repeat="skin in viewCtrl.item.skins">
+            <span>{{ skin.name }}</span>
+            <img ng-src="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/{{viewCtrl.item.key}}_{{skin.num}}.jpg" alt="{{ skin.name }}"/>
+        </li>
+    </ul>
+</div>
+<h2>spells</h2>
+<div>
+    <ul>
+        <li ng-repeat="spell in viewCtrl.item.spells">
+            <p>
+                <span>{{ spell.name }}</span>
+                <img ng-src="http://ddragon.leagueoflegends.com/cdn/5.2.1/img/spell/{{ spell.image.full }}" alt="{{ spell.name }}"/>
+            </p>
+            <p>
+                colldown : {{ spell.colldownBurn }}
+            </p>
+            <p>
+                cost : {{ spell.costBurn }}
+            </p>
+            <p>
+                description : {{ spell.description }}
+            </p>
+        </li>
+    </ul>
+</div>

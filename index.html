@@ -2,7 +2,10 @@
 <html lang="ko" ng-app="app">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no">
   <title>LOL Projects</title>
+  <link rel="stylesheet" type="text/css" href="/static_assets/css/default.css" />
+  <!-- <link rel="stylesheet" type="text/css" href="/static_assets/css/common.css" /> -->
 </head>
 <body ng-controller="AppController as appCtrl">
   <div ui-view>
@@ -15,5 +18,8 @@
   <script src="/static_app/app.module.js"></script>
 
   <script src="/static_app/components/main/controller.js"></script>
+  <script src="/static_app/components/champions/controller.js"></script>
+
+  <script src="/static_app/components/champions/service.js"></script>
 </body>
 </html>
