@@ -40,7 +40,7 @@ $ npm install
 node 서버사용  
 
 ```  
-$ npm server
+$ node server
 ```  
 
 localhost:8000 으로 실행된다.  
