@@ -1,25 +1,45 @@
 <!DOCTYPE html>
 <html lang="ko" ng-app="app">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, user-scalable=no">
-  <title>LOL Projects</title>
-  <link rel="stylesheet" type="text/css" href="/static_assets/css/default.css" />
-  <!-- <link rel="stylesheet" type="text/css" href="/static_assets/css/common.css" /> -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, user-scalable=no">
+    <title>LOL Projects</title>
+    <link rel="stylesheet" type="text/css" href="/static_bower/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/static_bower/bootstrap/dist/css/bootstrap-theme.min.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="/static_assets/css/common.css" /> -->
 </head>
 <body ng-controller="AppController as appCtrl">
-  <div ui-view>
-    <div>Index</div>
-  </div>
-  <script src="/static_bower/angular/angular.min.js"></script>
-  <script src="/static_bower/angular-ui-router/release/angular-ui-router.min.js"></script>
-  <script src="/static_bower/jquery/dist/jquery.min.js"></script>
-  <script src="/static_app/app.routes.js"></script>
-  <script src="/static_app/app.module.js"></script>
-
-  <script src="/static_app/components/main/controller.js"></script>
-  <script src="/static_app/components/champions/controller.js"></script>
-
-  <script src="/static_app/components/champions/service.js"></script>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">LOL</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <form class="navbar-form navbar-left" role="search">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="검색어를 입력하세요.">
+              </div>
+            </form>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <div ui-view><!--view container--></div>
+    <script src="/static_bower/jquery/dist/jquery.min.js"></script>
+    <script src="/static_bower/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/static_bower/angular/angular.min.js"></script>
+    <script src="/static_bower/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="/static_app/app.routes.js"></script>
+    <script src="/static_app/app.module.js"></script>
+    <script src="/static_app/components/main/controller.js"></script>
+    <script src="/static_app/components/champions/controller.js"></script>
+    <script src="/static_app/components/champions/service.js"></script>
 </body>
 </html>

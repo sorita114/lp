@@ -32,7 +32,7 @@
      .state( 'champion', {
         url : '/champion/:id',
         templateUrl : '/static_app/components/champions/view.html',
-        controller : 'viewController',
+        controller : 'ViewController',
         controllerAs : 'viewCtrl',
         resolve : {
             getChampion : function( ChampionFactory , $stateParams ) {

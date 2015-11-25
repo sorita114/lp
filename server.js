@@ -24,7 +24,7 @@ app.use( '/static_assets' , function( req , res, next ) {
 
 });
 
-var port = process.env.PORT || 8080; // set our port
+var port = process.env.PORT || 8085; // set our port
 
 //ROUTES FOR OUR API
 // ========================================================================================
