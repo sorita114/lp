@@ -7,7 +7,7 @@
 
   function MainFactory() {
     return {
-        
-    }
+
+    };
   }
 })();

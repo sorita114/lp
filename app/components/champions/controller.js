@@ -4,7 +4,7 @@
   angular
     .module( 'app' )
     .controller( 'ListController' , ListController )
-    .controller( 'viewController' , viewController );
+    .controller( 'ViewController' , ViewController );
 
     //app controller
 
@@ -14,7 +14,7 @@
       };
   }
 
-  function viewController( getChampion ) {
+  function ViewController( getChampion ) {
       this.item = getChampion;
   }
 
