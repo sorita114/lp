@@ -16,7 +16,12 @@
         url : '/',
         templateUrl : '/static_app/components/main/view.html',
         controller : 'MainController',
-        controllerAs : 'mainCtrl'
+        controllerAs : 'mainCtrl',
+        resolve : {
+          getSkin : function( MainFactory ) {
+            return MainFactory.get();
+          }
+        }
       })
       .state( 'champions', {
          url : '/champions',
@@ -24,9 +29,9 @@
          controller : 'ListController',
          controllerAs : 'listCtrl',
          resolve : {
-             getChampion : function( ChampionFactory ) {
-                 return ChampionFactory.get();
-             }
+           getChampion : function( ChampionFactory ) {
+               return ChampionFactory.get();
+           }
          }
      })
      .state( 'champion', {
@@ -39,7 +44,7 @@
                 return ChampionFactory.get( $stateParams.id );
             }
         }
-    })
+    });
   }
 
 })();

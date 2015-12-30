@@ -6,7 +6,11 @@ var express = require( 'express' ),     // call express
     app = express(),                    // defined our app using express
     https = require('https'),
     globals = require( './asseets/js/global.js')(),
-    bodyParser = require( 'body-parser' );
+    bodyParser = require( 'body-parser' ),
+    appkey = globals.get( 'appkey' ),
+    apiDomain = globals.get( 'apiUrl' ),
+    languageCode = globals.get( 'lang' ),
+    apiVersion = globals.get( 'version' );
 
 // configure app to use bodyParser()
 // this will let us get the data frome a post
@@ -47,53 +51,65 @@ router.get( '/' , function( req, res ) {
 
 // on routes that end in /champion
 // -----------------------------------------------------------------------------------------
-router.get( '/v1/champions' , function( request , response ) {
-    var appkey = globals.get( 'appkey' ),
-        apiDomain = globals.get( 'apiUrl' ),
-        languageCode = globals.get( 'lang' ),
-        apiVersion = globals.get( 'version' ),
-        url = apiDomain + '/' + languageCode + '/' + apiVersion + '/champion?api_key=' + appkey;
+router.get( '/champions' , function( request , response ) {
+  var url = apiDomain + '/' + languageCode + '/' + apiVersion + '/champion?api_key=' + appkey;
 
-    https.get( url , function( res ){
-        var chunks = '';
+  https.get( url , function( res ){
+      var chunks = '';
 
-        res.on( 'data' , function( d ) {
+      res.on( 'data' , function( d ) {
 
-            chunks = chunks + d;
+          chunks = chunks + d;
 
-        }).on( 'end' , function() {
+      }).on( 'end' , function() {
 
-            response.json( JSON.parse( chunks ) );
-        });
+          response.json( JSON.parse( chunks ) );
+      });
 
-    }).on( 'error' , function( e ) {
-        console.log( 'Got error : ' , e );
-    });
+  }).on( 'error' , function( e ) {
+      console.log( 'Get champions error : ' , e );
+  });
 });
 
-router.get( '/v1/champion/:id' , function( request , response ) {
-    var id = request.params.id,
-        appkey = globals.get( 'appkey' ),
-        apiDomain = globals.get( 'apiUrl' ),
-        languageCode = globals.get( 'lang' ),
-        apiVersion = globals.get( 'version' ),
-        url = apiDomain + '/' + languageCode + '/' + apiVersion + '/champion/' + id + '?champData=all&api_key=' + appkey;
+router.get( '/champion/:id' , function( request , response ) {
+  var id = request.params.id,
+      url = apiDomain + '/' + languageCode + '/' + apiVersion + '/champion/' + id + '?champData=all&api_key=' + appkey;
 
-    https.get( url , function( res ){
-        var chunks = '';
+  https.get( url , function( res ){
+      var chunks = '';
 
-        res.on( 'data' , function( d ) {
+      res.on( 'data' , function( d ) {
 
-            chunks = chunks + d;
+          chunks = chunks + d;
 
-        }).on( 'end' , function() {
+      }).on( 'end' , function() {
 
-            response.json( JSON.parse( chunks ) );
-        });
+          response.json( JSON.parse( chunks ) );
+      });
 
-    }).on( 'error' , function( e ) {
-        console.log( 'Got error : ' , e );
+  }).on( 'error' , function( e ) {
+      console.log( 'Get champion error : ' , e );
+  });
+});
+
+router.get( '/skins', function( request , response ) {
+  var url = apiDomain + '/' + languageCode + '/' + apiVersion + '/champion?champData=skins&api_key=' + appkey;
+
+  https.get( url , function( res ) {
+    var chunks = '';
+
+    res.on( 'data' , function( d ) {
+
+      chunks = chunks + d;
+
+    }).on( 'end' , function() {
+      
+      response.json( JSON.parse( chunks ) );
+
     });
+  }).on( 'error' , function( e ) {
+      console.log( 'Get skins error : ' , e );
+  });
 });
 
 

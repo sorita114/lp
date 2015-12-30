@@ -5,9 +5,24 @@
     .module( 'app' )
     .factory( 'MainFactory' , MainFactory );
 
-  function MainFactory() {
-    return {
+    MainFactory.$inject = [ '$http', '$q' ];
 
+  function MainFactory( $http, $q ) {
+    return {
+      get : function() {
+        var url = '../api/skins',
+            deferred = $q.defer();
+
+        $http.get( url )
+          .success( function( data, status, headers, config ) {
+            deferred.resolve( data );
+          })
+          .error( function( data, status ) {
+            deferred.reject( data );
+          });
+
+        return deferred.promise;
+      }
     };
   }
 })();

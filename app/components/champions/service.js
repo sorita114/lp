@@ -10,7 +10,7 @@
   function ChampionFactory( $http , $q ) {
     return {
         get : function( id ) {
-            var url = '../api/v1',
+            var url = '../api',
                 deferred = $q.defer();
 
             if( id ) {

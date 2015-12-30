@@ -5,7 +5,10 @@
     .module( 'app' )
     .controller( 'MainController' , MainController );
 
-  function MainController() {
-
+  function MainController( getSkin ) {
+    this.datas = {
+      skins : getSkin
+    };
   }
+
 })();
