@@ -55,3 +55,4 @@ localhost:8000 으로 실행된다.
   * 2015-12-30 브런치 생성 0.0.4  
   * 2015-12-30 메인 - 영웅 스킨 api 추가  
   * 2015-12-30 node server global 변수 추가  
+  * 2016-02-29 main page edit and infiniteScroll 적용  

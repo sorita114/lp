@@ -2,11 +2,12 @@
 <!--search input-->
 <div class="container">
     <div class="row">
-        <div class="jumbotron">
-            <h1 class="text-center">title</h1>
-            <form action="">
-                <div class="form-group"><label for=""></label></div>
-            </form>
-        </div>
+        <ul class="list-unstyled list-inline" infinite-scroll="mainCtrl.loadMore()" infinite-scroll-distance="2">
+          <li ng-repeat="item in mainCtrl.datas.skins.data">
+            <a href="#/champion/{{item.id}}">
+              <img ng-src="http://ddragon.leagueoflegends.com/cdn/5.2.1/img/champion/{{item.key}}.png" class="img-circle"/>
+            </a>
+          </li>
+        </ul>
     </div>
 </div>
