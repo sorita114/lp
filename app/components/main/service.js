@@ -9,7 +9,7 @@
 
   function MainFactory( $http, $q ) {
     return {
-      get : function() {
+      getSkin : function() {
         var url = '../api/skins',
             deferred = $q.defer();
 

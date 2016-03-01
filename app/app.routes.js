@@ -19,7 +19,7 @@
         controllerAs : 'mainCtrl',
         resolve : {
           getSkin : function( MainFactory ) {
-            return MainFactory.get();
+            return MainFactory.getSkin();
           }
         }
       })
