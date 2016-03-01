@@ -4,8 +4,7 @@
 
   angular
     .module( 'app' , [
-      'app.router',
-      'infinite-scroll'
+      'app.router'
     ])
     .config( configBlock )
     .run( runBlock )
