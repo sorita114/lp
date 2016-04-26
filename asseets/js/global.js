@@ -1,6 +1,6 @@
 module.exports = function() {
     var defaults = {
-        appkey : '96a61826-7b3a-4e33-94c5-09d33230dc02',
+        appkey : 'd8d763b5-67bc-41b0-911a-cb88080b925b',
         apiUrl : 'https://global.api.pvp.net/api/lol/static-data',
         lang : 'kr',
         version : 'v1.2'
