@@ -56,3 +56,4 @@ localhost:8000 으로 실행된다.
   * 2015-12-30 메인 - 영웅 스킨 api 추가  
   * 2015-12-30 node server global 변수 추가  
   * 2016-02-29 main page edit and infiniteScroll 적용  
+  * 2016-06-13 main page 수정 / main list 검색 기능 추가 / server 수정  
