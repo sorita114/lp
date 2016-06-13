@@ -5,9 +5,11 @@
 var express = require( 'express' ),     // call express
     app = express(),                    // defined our app using express
     https = require('https'),
-    globals = require( './asseets/js/global.js')(),
+    globals = require( './assets/js/global.js')(),
     bodyParser = require( 'body-parser' ),
     appkey = globals.get( 'appkey' ),
+    imageVersion = globals.get( 'imageVersion' ),
+    cdnImageDomain = globals.get( 'cdnImageDomain' ),
     apiDomain = globals.get( 'apiUrl' ),
     languageCode = globals.get( 'lang' ),
     apiVersion = globals.get( 'version' );
@@ -21,12 +23,7 @@ app.use( bodyParser.json() );
 app.use( '/static_bower' , express.static( __dirname + '/bower_components' ));
 app.use( '/static_npm' , express.static( __dirname + '/node_modules') );
 app.use( '/static_app' , express.static( __dirname + '/app') );
-app.use( '/static_assets' , function( req , res, next ) {
-  var fileUrl = req.url;
-
-  res.sendFile( fileUrl , { root : __dirname + '/asseets' });
-
-});
+app.use( '/static_style', express.static( __dirname + '/assets/css') );
 
 var port = process.env.PORT || 8085; // set our port
 
@@ -103,7 +100,7 @@ router.get( '/skins', function( request , response ) {
       chunks = chunks + d;
 
     }).on( 'end' , function() {
-      
+
       response.json( JSON.parse( chunks ) );
 
     });
@@ -112,8 +109,6 @@ router.get( '/skins', function( request , response ) {
   });
 });
 
-
-
 // REGISTER OUR ROUTES------------------------
 // all of our routes will be prefiexed with /api
 app.use( '/api' , router );
@@ -121,7 +116,7 @@ app.use( '/api' , router );
 // START THE SERVER
 // =========================================================================================
 app.all( '/' , function ( req, res ) {
-  res.sendFile( 'index.html' , { root : __dirname });
+    res.sendFile( 'index.html' , { root : __dirname });
 });
 
 app.listen( port );

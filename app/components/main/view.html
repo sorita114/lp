@@ -2,12 +2,22 @@
 <!--search input-->
 <div class="container">
     <div class="row">
-        <ul class="list-unstyled list-inline">
-          <li ng-repeat="item in mainCtrl.skins">
-            <a href="#/champion/{{item.id}}">
-              <img ng-src="http://ddragon.leagueoflegends.com/cdn/5.2.1/img/champion/{{item.key}}.png" class="img-circle"/>
-            </a>
-          </li>
-        </ul>
+        <div class="col-md-12">
+            <input type="text" class="form-control" placeholder="Search for" ng-model="search.$">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="list-unstyled list-inline">
+              <li ng-repeat="item in items| orderBy: 'name' | filter:search ">
+                <a href="#/champion/{{item.id}}" class="thumbnail">
+                  <img ng-src="http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/{{item.key}}.png" class="champion-thumnail"/>
+                  <div class="info">
+                      
+                  </div>
+                </a>
+              </li>
+            </ul>
+        </div>
     </div>
 </div>

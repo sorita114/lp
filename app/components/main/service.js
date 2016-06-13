@@ -15,7 +15,12 @@
 
         $http.get( url )
           .success( function( data, status, headers, config ) {
-            deferred.resolve( data );
+              var d = [];
+              for( var prop in data.data ) {
+                  d.push( data.data[ prop] );
+              }
+
+              deferred.resolve( d );
           })
           .error( function( data, status ) {
             deferred.reject( data );
