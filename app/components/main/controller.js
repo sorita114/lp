@@ -5,11 +5,10 @@
     .module( 'app' )
     .controller( 'MainController' , MainController );
 
-  function MainController( getSkin ) {
-    var datas = getSkin.data,
-        _this = this;
+  function MainController( $scope, getSkin ) {
+      $scope.items = getSkin;
 
-    this.skins = datas;
+      console.log( $scope.items );
   }
 
 })();
