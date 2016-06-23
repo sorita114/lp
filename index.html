@@ -6,10 +6,11 @@
     <title>LOL Projects</title>
     <link rel="stylesheet" type="text/css" href="/static_bower/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/static_bower/bootstrap/dist/css/bootstrap-theme.min.css" />
-    <link rel="stylesheet" type="text/css" href="/static_style/main.css">
+    <link rel="stylesheet" type="text/css" href="/static_style/base.css"/>
+    <link rel="stylesheet" type="text/css" href="/static_style/main.css"/>
     <!-- <link rel="stylesheet" type="text/css" href="/static_assets/css/common.css" /> -->
 </head>
-<body ng-controller="AppController as appCtrl">
+<body>
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -23,7 +24,7 @@
             <a class="navbar-brand" href="#">LOL</a>
         </div>
     </nav>
-    <div ui-view><!--view container--></div>
+    <div ui-view ng-class="viewClass"><!--view container--></div>
     <script src="/static_bower/jquery/dist/jquery.min.js"></script>
     <script src="/static_bower/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/static_bower/angular/angular.min.js"></script>
