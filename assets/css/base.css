@@ -1,0 +1,21 @@
+.hide{ display: none }
+.layer-popup{
+  background-color:#000;
+  position:fixed;
+  top:0;
+  left:0;
+  width: 100%;
+  height : 100%
+}
+.layer-popup .content{
+  width: 80%;
+  margin : 0 auto;
+  position : relative;
+  top : 10%;
+  color : #fff;
+}
+
+.layer-popup .content .header .close{
+  color : #fff;
+  opacity: 1
+}

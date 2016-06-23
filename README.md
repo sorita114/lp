@@ -43,8 +43,6 @@ node 서버사용
 $ node server
 ```  
 
-localhost:8000 으로 실행된다.  
-
 ## 3. 히스토리  
   * 2015-04-29 구조 변경  
   * 2015-04-29 server css 경로 수정. type 변경  
@@ -57,3 +55,4 @@ localhost:8000 으로 실행된다.
   * 2015-12-30 node server global 변수 추가  
   * 2016-02-29 main page edit and infiniteScroll 적용  
   * 2016-06-13 main page 수정 / main list 검색 기능 추가 / server 수정  
+  * 2016-06-22 main page - skin / detail 기능 추가  , base.css 추가, 스타일 수정  
