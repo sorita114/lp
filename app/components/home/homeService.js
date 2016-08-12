@@ -3,11 +3,11 @@
 
   angular
     .module( 'app' )
-    .factory( 'MainFactory' , MainFactory );
+    .factory( 'homeService' , homeService );
 
-    MainFactory.$inject = [ '$http', '$q' ];
+    homeService.$inject = [ '$http', '$q' ];
 
-  function MainFactory( $http, $q ) {
+  function homeService( $http, $q ) {
     return {
       getSkin : function() {
         var url = '../api/skins',

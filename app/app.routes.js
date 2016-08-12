@@ -18,8 +18,8 @@
         controller : 'HomeController',
         controllerAs : 'homeCtrl',
         resolve : {
-          getSkin : function( MainFactory ) {
-            return MainFactory.getSkin();
+          getSkin : function( homeService ) {
+            return homeService.getSkin();
           }
         }
       })

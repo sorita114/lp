@@ -56,3 +56,5 @@ $ node server
   * 2016-02-29 main page edit and infiniteScroll 적용  
   * 2016-06-13 main page 수정 / main list 검색 기능 추가 / server 수정  
   * 2016-06-22 main page - skin / detail 기능 추가  , base.css 추가, 스타일 수정  
+  * 2016-08-12 프로젝트 구조 변경  
+  * 2016-08-12 directive 분리  

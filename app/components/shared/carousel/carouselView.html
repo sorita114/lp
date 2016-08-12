@@ -1,0 +1,25 @@
+<div class="layer-popup">
+  <div class="content">
+    <div class="header">
+      <button type="button" class="close" ng-click="close()"><span>&times;</span></button>
+      <h4 class="title" ng-bind="carouselTitle"></h4>
+    </div>
+    <div class="body">
+      <div class="carousel" id="skinsSlide">
+        <div class="carousel-inner">
+          <a class="left carousel-control" href="#skinsSlide" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#skinsSlide" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+          <div class="item" ng-class="{active : $first}" ng-repeat="data in carouselData">
+            <img ng-src="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/{{carouselTitle}}_{{data.num}}.jpg" style="margin:0 auto">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

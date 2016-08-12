@@ -3,17 +3,27 @@
 
   angular
     .module( 'app' )
-    .directive( 'dialog' , Dialog );
+    .directive( 'dialog' , dialog );
 
-    function Dialog() {
-       return {
-         link : function( scope, element, attrs ) {
-           element.show();
-           scope.close = function() {
-             element.remove();
-           };
-         },
-         templateUrl : '/static_app/components/shared/dialog/dialogView.html'
-       };
-    }
+  dialog.$inject = [ '$sce' ];
+
+  function dialog( $sce ) {
+     return {
+       scope : {
+         title : '=',
+         content : '='
+       },
+       link : function( scope, element, attrs ) {
+         element.show();
+         console.log( scope );
+         scope.close = function() {
+           element.remove();
+         };
+         scope.bindHtml = function() {
+           return $sce.trustAsHtml( scope.content );
+         };
+       },
+       templateUrl : '/static_app/components/shared/dialog/dialogView.html'
+     };
+  }
 })();
