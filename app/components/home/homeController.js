@@ -3,16 +3,17 @@
 
   angular
     .module( 'app' )
-    .controller( 'MainController' , MainController );
+    .controller( 'HomeController' , HomeController );
 
-  function MainController( $scope, $compile, $sce, $timeout, getSkin ) {
+  function HomeController( $scope, $compile, $sce, $timeout, getSkin ) {
     $scope.dialogContent = null;
     $scope.items = getSkin;
     $scope.viewClass = 'main-view';
     $scope.skinId = null;
     $scope.showDialog = function( id ) {
-      var data = $scope.items.filter( function( v ) { return v.id === id })[0],
-          key = data.key,
+      var data = $scope.items.filter( function( v ) { return v.id === id; })[0];
+
+      var key = data.key,
           skins = data.skins,
           skinHtml = '<div class="carousel" id="skinsSlide"><div class="carousel-inner">',
           controlHtml = '<a class="left carousel-control" href="#skinsSlide" role="button" data-slide="prev">'+
@@ -35,7 +36,7 @@
       $timeout( function() {
         $( '.layer-popup' ).find( '.carousel' ).carousel();
       }, 500 );
-      $( 'body' ).append( $compile( '<layer-popup></layer-popup>' )( $scope ) );
-    }
+      $( 'body' ).append( $compile( '<dialog></dialog>' )( $scope ) );
+    };
   }
 })();

@@ -12,11 +12,11 @@
     $urlRouterProvider.otherwise( '/' );
 
     $stateProvider
-      .state( 'main' , {
+      .state( 'home' , {
         url : '/',
-        templateUrl : '/static_app/components/main/view.html',
-        controller : 'MainController',
-        controllerAs : 'mainCtrl',
+        templateUrl : '/static_app/components/home/homeView.html',
+        controller : 'HomeController',
+        controllerAs : 'homeCtrl',
         resolve : {
           getSkin : function( MainFactory ) {
             return MainFactory.getSkin();
