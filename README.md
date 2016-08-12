@@ -4,10 +4,19 @@
 ## 1. 구조  
 > ..app/  
 > ....components/  
+> ......home  
+> ........homeController.js  
+> ........homeService.js  
+> ........homeView.html    
 > ......main/ //main 컨텐츠  
 > ........controller.js //controller  
-> ........view.html //view page  
 > ....shared/ //공통 컨텐츠  
+> ......carousel //slider directive  
+> ........carouselDirective.js  
+> ........carouselView.html  
+> ......dialog //dialog directive  
+> ........dialogDirective.js  
+> ........dialogView.html  
 > ....app.module.js  
 > ....app.routes.js  
 > ..asseets/  
