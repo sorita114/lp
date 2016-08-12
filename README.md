@@ -58,3 +58,4 @@ $ node server
   * 2016-06-22 main page - skin / detail 기능 추가  , base.css 추가, 스타일 수정  
   * 2016-08-12 프로젝트 구조 변경  
   * 2016-08-12 directive 분리  
+  * 2016-08-12 불필요한 브런치 삭제  
