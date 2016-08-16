@@ -1,55 +1,64 @@
 (function() {
   'use strict';
 
-  var _defaults = {
-    useLog : { editable : true, value : true },
-    root : { editable : true, value : '/' },
-    contextPath : { editable : true, value : '/' },
-    appPath : { editable : true, value : '/static_app' },
-    stylePath : { editable : true, value : '/static_style' },
-    skinVersion : { editable : true, value : '6.16.2' }
-  };
-
   angular
     .module( 'utils.config', [])
-    .constant( 'defaults', _defaults)
+    .constant( '_defaults', {
+      useLog : { editable : true, value : true },
+      root : { editable : true, value : '/' },
+      contextPath : { editable : true, value : '/' },
+      appPath : { editable : true, value : '/static_app' },
+      stylePath : { editable : true, value : '/static_style' },
+      skinVersion : { editable : true, value : '6.16.2' }
+    })
+    .run( runBlock )
     .service( 'UtilsConfigService', UtilsConfigService );
 
-  UtilsConfigService.$inject = [ 'defaults' ];
+  UtilsConfigService.$inject = [ '_defaults' ];
 
-  function UtilsConfigService( defaults ) {
+  function runBlock() {
+    if( !window.console ) {
+      window.console = {
+        error : function( str ) {
+          alert( str );
+        }
+      };
+    }
+  }
+
+  function UtilsConfigService( _defaults ) {
     this.get = get;
     this.getAll = getAll;
     this.set = set;
 
     function get( key ) {
       if( key === undefined ) {
-        //TODO error message
+        return console.error( 'key is undefined' );
       } else {
-        return defaults[ key ].value;
+        return _defaults[ key ].value;
       }
     }
 
     function getAll() {
-      return defaults;
+      return _defaults;
     }
 
     function set( key, value ) {
       if( typeof key === 'object' ) {
         for( var prop in key ) {
-          if( defaults[ prop ] ) {
-            if( defaults[ prop ].editable ) {
-              defaults[ prop ].value = key[ prop ];
-              defaults[ prop ].editable = false;
+          if( _defaults[ prop ] ) {
+            if( _defaults[ prop ].editable ) {
+              _defaults[ prop ].value = key[ prop ];
+              _defaults[ prop ].editable = false;
             }
           } else {
-            defaults[ prop ].value = key[ prop ];
-            defaults[ prop ].editable = false;
+            _defaults[ prop ].value = key[ prop ];
+            _defaults[ prop ].editable = false;
           }
         }
       } else if( typeof key === 'string' ) {
-        defaults[ key ].value = value;
-        defaults[ key ].editable = false;
+        _defaults[ key ].value = value;
+        _defaults[ key ].editable = false;
       }
     }
   }
