@@ -23,7 +23,7 @@
            return $sce.trustAsHtml( scope.content );
          };
        },
-       templateUrl : '/static_app/components/shared/dialog/dialogView.html'
+       templateUrl : '/app/components/shared/dialog/dialogView.html'
      };
   }
 })();

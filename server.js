@@ -20,10 +20,11 @@ app.use( bodyParser.urlencoded( { extended : true } ) );
 app.use( bodyParser.json() );
 
 // set path
-app.use( '/static_bower' , express.static( __dirname + '/bower_components' ));
-app.use( '/static_npm' , express.static( __dirname + '/node_modules') );
-app.use( '/static_app' , express.static( __dirname + '/app') );
-app.use( '/static_style', express.static( __dirname + '/assets/css') );
+app.use( '/library' , express.static( __dirname + '/bower_components' ));
+app.use( '/build' , express.static( __dirname + '/node_modules') );
+app.use( '/app' , express.static( __dirname + '/app') );
+app.use( '/js', express.static( __dirname + '/assets/js') );
+app.use( '/css', express.static( __dirname + '/assets/css') );
 
 var port = process.env.PORT || 8085; // set our port
 

@@ -16,7 +16,7 @@
     var homeState = {
       name : 'home',
       url : '/',
-      templateUrl : '/static_app/components/home/homeView.html',
+      templateUrl : '/app/components/home/homeView.html',
       controller : 'HomeController',
       controllerAs : 'homeCtrl',
       resolve : {
