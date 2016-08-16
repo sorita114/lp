@@ -24,7 +24,7 @@
             <a class="navbar-brand" href="#">LOL</a>
         </div>
     </nav>
-    <div ui-view ng-class="viewClass"><!--view container--></div>
+    <div ui-view state="{{$state.current.name}}"><!--view container--></div>
     <script src="/static_bower/jquery/dist/jquery.min.js"></script>
     <script src="/static_bower/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/static_bower/angular/angular.min.js"></script>

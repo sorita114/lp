@@ -5,21 +5,23 @@
     .module( 'app' )
     .controller( 'HomeController' , HomeController );
 
-  function HomeController( $scope, $compile, $sce, $timeout, getSkin ) {
-    //console.log( $scope );
+  HomeController.$inject = [ '$scope', '$compile', 'getSkin' ];
 
-    $scope.items = getSkin;
-    $scope.viewClass = 'main-view';
-    $scope.skinId = null;
-    $scope.selectedTitle = '';
-    $scope.selectedSkins = [];
-    $scope.showDialog = function( id ) {
-      var data = $scope.items.filter( function( v ) { return v.id === id; })[0];
+  function HomeController( $scope, $compile, getSkin ) {
+    var _this = this;
 
-      $scope.selectedTitle = data.key;
-      $scope.selectedSkins = data.skins;
+    _this.items = getSkin;
+    _this.skinId = null;
+    _this.selectedTitle = '';
+    _this.selectedSkins = [];
 
-      $( 'body' ).append( $compile( '<carousel carousel-title="selectedTitle" carousel-data="selectedSkins"></carousel>' )( $scope ) );
+    _this.showDialog = function( id ) {
+      var data = _this.items.filter( function( v ) { return v.id === id; })[0];
+
+      _this.selectedTitle = data.key;
+      _this.selectedSkins = data.skins;
+
+      $( 'body' ).append( $compile( '<carousel carousel-title="homeCtrl.selectedTitle" carousel-data="homeCtrl.selectedSkins"></carousel>' )( $scope ) );
     };
   }
 })();

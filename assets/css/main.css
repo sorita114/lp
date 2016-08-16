@@ -1,16 +1,16 @@
-.main-view .lists .thumbnail{
+[state="home"] .lists .thumbnail{
     position: relative;
 }
-.main-view .lists .thumbnail:hover img{
+[state="home"] .lists .thumbnail:hover img{
   opacity: 0.3;
   background-color: #000
 }
-.main-view .lists .thumbnail .caption{
+[state="home"] .lists .thumbnail .caption{
   position: absolute;
   top:0;
   left:0;
 }
-.main-view .lists .thumbnail .caption .title{
+[state="home"] .lists .thumbnail .caption .title{
   font-weight: bold;
   white-space: nowrap;
   width : 100%;
