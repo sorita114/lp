@@ -5,7 +5,9 @@
     .module( 'app')
     .controller( 'MainController', MainController );
 
-  function MainController( MainService ) {
+  MainController.$inject = [ 'UtilsLogService', 'MainService' ];
+
+  function MainController( UtilsLog, MainService ) {
     var _this = this;
 
     _this.skinUrl = MainService.getSkinUrl();

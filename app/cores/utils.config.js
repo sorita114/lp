@@ -13,17 +13,14 @@
   angular
     .module( 'utils.config', [])
     .constant( 'defaults', _defaults)
-    .factory( 'UtilsConfigService', UtilsConfigService );
+    .service( 'UtilsConfigService', UtilsConfigService );
 
   UtilsConfigService.$inject = [ 'defaults' ];
 
   function UtilsConfigService( defaults ) {
-    var services = {
-      get : get,
-      getAll : getAll,
-      set : set
-    };
-    return services;
+    this.get = get;
+    this.getAll = getAll;
+    this.set = set;
 
     function get( key ) {
       if( key === undefined ) {

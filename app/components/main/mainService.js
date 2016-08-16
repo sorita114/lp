@@ -7,9 +7,9 @@
 
   MainService.$inject = [ 'UtilsConfigService' ];
 
-  function MainService( UtilsConfigService ) {
+  function MainService( UtilsConfig ) {
     this.getSkinUrl = function() {
-      var skinVersion = UtilsConfigService.get( 'skinVersion' ),
+      var skinVersion = UtilsConfig.get( 'skinVersion' ),
           skinUrl = 'http://ddragon.leagueoflegends.com/cdn/' + skinVersion + '/img/champion';
 
       return skinUrl;
