@@ -56,36 +56,4 @@
       }
     }
   }
-
-  function config( key, value ) {
-    if( typeof key === 'object' ) {
-      setObj( key );
-    } else if( typeof key === 'string' && arguments.length === 2 ) {
-      //setStr( key, value );
-    } else if( typeof key === 'string' && arguments.length === 1 ) {
-      //return get( key );
-    } else if( arguments.length === 0 ) {
-      //return getProperty();
-    } else {
-      //TODO error
-    }
-  }
-
-  function setObj( obj ) {
-    for( var prop in obj ) {
-      if( _defaults[ prop ] ) {
-        if( _defaults[ prop ].editable ) {
-          _defaults[ prop ].value = obj[ prop ];
-          _defaults[ prop ].editable = false;
-        }
-      } else {
-        _defaults[ prop ].value = obj[ prop ];
-        _defaults[ prop ].editable = false;
-      }
-    }
-  }
-
-  function setStr() {
-
-  }
 })();
