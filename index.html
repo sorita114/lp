@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="/static_style/main.css"/>
     <!-- <link rel="stylesheet" type="text/css" href="/static_assets/css/common.css" /> -->
 </head>
-<body>
+<body ng-controller="MainController as mainCtrl">
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -29,8 +29,11 @@
     <script src="/static_bower/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/static_bower/angular/angular.min.js"></script>
     <script src="/static_bower/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="/static_app/cores/utils.config.js"></script>
     <script src="/static_app/app.routes.js"></script>
     <script src="/static_app/app.module.js"></script>
+    <script src="/static_app/components/main/mainController.js"></script>
+    <script src="/static_app/components/main/mainService.js"></script>
     <script src="/static_app/components/home/homeController.js"></script>
     <script src="/static_app/components/home/homeService.js"></script>
     <script src="/static_app/components/shared/carousel/carouselDirective.js"></script>

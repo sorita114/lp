@@ -5,7 +5,9 @@
     .module( 'app')
     .controller( 'MainController', MainController );
 
-  function MainController() {
-    
+  function MainController( MainService ) {
+    var _this = this;
+
+    _this.skinUrl = MainService.getSkinUrl();
   }
 })();

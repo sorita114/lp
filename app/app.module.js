@@ -4,6 +4,7 @@
 
   angular
     .module( 'app' , [
+      'utils.config',
       'app.router'
     ])
     .config( configBlock )

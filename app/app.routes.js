@@ -20,8 +20,8 @@
       controller : 'HomeController',
       controllerAs : 'homeCtrl',
       resolve : {
-        getSkin : function( homeService ) {
-          return homeService.getSkin();
+        getSkin : function( HomeService ) {
+          return HomeService.getSkin();
         }
       }
     };
