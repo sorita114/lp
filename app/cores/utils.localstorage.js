@@ -2,20 +2,15 @@
   'use strict';
 
   angular
-    .module( 'utils.localstorage', [
-      'utils.cookie'
-    ])
+    .module( 'utils.localstorage', [])
     .service( 'UtilsLocalStorageService', UtilsLocalStorageService );
 
-  UtilsLocalStorageService.$inject = [ 'UtilsCookieService' ];
+  function UtilsLocalStorageService() {
+    var _this = this;
 
-  function UtilsLocalStorageService( UtilsCookie ) {
-    var _this = this,
-        isSupportLocalStorage = ( window.localStorage === 'undefined' ? false : true );
-
-    _this.get = ( isSupportLocalStorage ? get : UtilsCookie.get );
-    _this.set = ( isSupportLocalStorage ? set : UtilsCookie.set );
-    _this.remove = ( isSupportLocalStorage ? remove : UtilsCookie.remove );
+    _this.get = get;
+    _this.set = set;
+    _this.remove = remove;
   }
 
   function get( key ) {

@@ -3,7 +3,11 @@
 
   angular
     .module( 'app.router' ,[
-      'ui.router'
+      'ui.router',
+      'utils.config',
+      'utils.log',
+      'utils.cookie',
+      'utils.localstorage'
     ])
     .config( configBlock );
 
@@ -20,8 +24,22 @@
       controller : 'HomeController',
       controllerAs : 'homeCtrl',
       resolve : {
-        getSkin : function( HomeService ) {
-          return HomeService.getSkin();
+        getSkin : function( HomeService, UtilsConfigService, UtilsLogService, UtilsCookieService, UtilsLocalStorageService ) {
+
+          var skins = UtilsLocalStorageService.get( 'skins' ),
+              promise = null;
+
+          if( skins === null ) {
+            promise = HomeService.getSkin();
+            
+            promise.then( function( resData ) {
+              UtilsLocalStorageService.set( 'skins', resData );
+              UtilsCookieService.set( 'skinVersion', UtilsConfigService.get( 'skinVersion' ) );
+            });
+            return promise;
+          } else {
+            return JSON.parse( skins );
+          }
         }
       }
     };
