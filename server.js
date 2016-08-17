@@ -97,5 +97,13 @@ app.all( '/' , function ( req, res ) {
     res.sendFile( 'index.html' , { root : __dirname });
 });
 
+app.use( '/champion/:id', function( req, res ) {
+  res.redirect( '/#/champion/' + req.params.id );
+});
+
+app.use( function( req, res, next ) {
+  res.status( 404 ).sendFile( '404.html' , { root : __dirname });
+});
+
 app.listen( port );
 console.log( 'project on port: ' + port );

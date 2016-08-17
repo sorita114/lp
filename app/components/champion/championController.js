@@ -5,7 +5,11 @@
     .module( 'app' )
     .controller( 'ChampionController', ChampionController );
 
-  function ChampionController() {
+  ChampionController.$inject = [ 'logger', 'getChampion' ];
 
+  function ChampionController( logger, getChampion ) {
+    _this.championData = getChampion;
+
+    
   }
 })();

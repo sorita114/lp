@@ -25,7 +25,7 @@
       controller : 'HomeController',
       controllerAs : 'homeCtrl',
       resolve : {
-        getSkin : function( api, config, cookie, localstorage ) {
+        getSkin : [ 'api', 'config', 'cookie', 'localstorage', function( api, config, cookie, localstorage ) {
 
           var skins = localstorage.get( 'skins' ),
               promise = null;
@@ -41,7 +41,7 @@
           } else {
             return JSON.parse( skins );
           }
-        }
+        }]
       }
     };
 
@@ -52,49 +52,14 @@
       controller : 'ChampionController',
       controllerAs : 'championCtrl',
       resolve : {
-        getChampion : function() {
-
-        }
+        getChampion : [ '$stateParams', 'logger', 'api', function( $stateParams, logger, api ) {
+          return api.get( '/api/champion/' + $stateParams.id );
+        }]
       }
     };
 
     $stateProvider.state( homeState );
     $stateProvider.state( detailState );
-
-    // $stateProvider
-    //   .state( 'home' , {
-    //     url : '/',
-    //     templateUrl : '/static_app/components/home/homeView.html',
-    //     controller : 'HomeController',
-    //     controllerAs : 'homeCtrl',
-    //     resolve : {
-    //       getSkin : function( homeService ) {
-    //         return homeService.getSkin();
-    //       }
-    //     }
-    //   })
-    //   .state( 'champions', {
-    //      url : '/champions',
-    //      templateUrl : '/static_app/components/champions/list.html',
-    //      controller : 'ListController',
-    //      controllerAs : 'listCtrl',
-    //      resolve : {
-    //        getChampion : function( ChampionFactory ) {
-    //            return ChampionFactory.get();
-    //        }
-    //      }
-    //  })
-    //  .state( 'champion', {
-    //     url : '/champion/:id',
-    //     templateUrl : '/static_app/components/champions/view.html',
-    //     controller : 'ViewController',
-    //     controllerAs : 'viewCtrl',
-    //     resolve : {
-    //         getChampion : function( ChampionFactory , $stateParams ) {
-    //             return ChampionFactory.get( $stateParams.id );
-    //         }
-    //     }
-    // });
   }
 
 })();
