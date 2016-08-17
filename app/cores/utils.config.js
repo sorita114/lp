@@ -9,7 +9,8 @@
       contextPath : { editable : true, value : '/' },
       appPath : { editable : true, value : '/static_app' },
       stylePath : { editable : true, value : '/static_style' },
-      skinVersion : { editable : true, value : '6.16.2' }
+      skinVersion : { editable : true, value : '6.16.2' },
+      spellVersion : { editable : true, value : '6.16.2' }
     })
     .run( runBlock )
     .service( 'UtilsConfigService', UtilsConfigService );

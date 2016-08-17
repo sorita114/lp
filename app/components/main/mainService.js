@@ -5,14 +5,18 @@
     .module( 'app' )
     .service( 'MainService', MainService );
 
-  MainService.$inject = [ 'UtilsConfigService' ];
+  function MainService() {
+    var _this = this;
 
-  function MainService( UtilsConfig ) {
-    this.getSkinUrl = function() {
-      var skinVersion = UtilsConfig.get( 'skinVersion' ),
-          skinUrl = 'http://ddragon.leagueoflegends.com/cdn/' + skinVersion + '/img/champion';
+    _this.getSkinUrl = getSkinUrl;
+    _this.getSpellUrl = getSpellUrl;
+  }
 
-      return skinUrl;
-    };
+  function getSkinUrl( version ) {
+    return 'http://ddragon.leagueoflegends.com/cdn/' + version + '/img/champion';
+  }
+
+  function getSpellUrl( version ) {
+    return 'http://ddragon.leagueoflegends.com/cdn/' + version + '/img/spell';
   }
 })();
