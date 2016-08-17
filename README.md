@@ -70,3 +70,4 @@ $ node server
   * 2016-08-12 불필요한 브런치 삭제  
   * 2016-08-16 utils 컨버팅 작업 중 / 구조변경 및 mainController , mainService 추가, 컨트롤러 내 $scope -> this 로 변경 등등  
   * 2016-08-17 cookie 모듈 추가 / localstorage 모듈 추가 / skin data save localstorage and skin data version check logic add  
+  * 2016-08-17 server router 예외처리  
