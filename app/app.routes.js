@@ -11,10 +11,11 @@
     ])
     .config( configBlock );
 
-  configBlock.$inject = [ '$stateProvider', '$urlRouterProvider' ];
+  configBlock.$inject = [ '$locationProvider', '$stateProvider', '$urlRouterProvider' ];
 
   //config block
-  function configBlock ( $stateProvider , $urlRouterProvider ){
+  function configBlock ( $locationProvider, $stateProvider , $urlRouterProvider ){
+    $locationProvider.html5Mode( true );
     $urlRouterProvider.otherwise( '/' );
 
     var homeState = {
@@ -31,7 +32,7 @@
 
           if( skins === null ) {
             promise = HomeService.getSkin();
-            
+
             promise.then( function( resData ) {
               UtilsLocalStorageService.set( 'skins', resData );
               UtilsCookieService.set( 'skinVersion', UtilsConfigService.get( 'skinVersion' ) );
@@ -44,7 +45,21 @@
       }
     };
 
+    var detailState = {
+      name : 'detail',
+      url : '/champion/:id',
+      templateUrl : '/app/components/champion/championView.html',
+      controller : 'ChampionController',
+      controllerAs : 'championCtrl',
+      resolve : {
+        getChampion : function() {
+
+        }
+      }
+    };
+
     $stateProvider.state( homeState );
+    $stateProvider.state( detailState );
 
     // $stateProvider
     //   .state( 'home' , {

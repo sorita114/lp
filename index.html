@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko" ng-app="app">
 <head>
+    <base href="/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, maximum-scale=1, user-scalable=no">
     <title>LOL Projects</title>
@@ -8,7 +9,6 @@
     <link rel="stylesheet" type="text/css" href="/library/bootstrap/dist/css/bootstrap-theme.min.css" />
     <link rel="stylesheet" type="text/css" href="/css/base.css"/>
     <link rel="stylesheet" type="text/css" href="/css/main.css"/>
-    <!-- <link rel="stylesheet" type="text/css" href="/static_assets/css/common.css" /> -->
 </head>
 <body ng-controller="MainController as mainCtrl">
     <nav class="navbar navbar-default">
@@ -39,6 +39,8 @@
     <script src="/app/components/main/mainService.js"></script>
     <script src="/app/components/home/homeController.js"></script>
     <script src="/app/components/home/homeService.js"></script>
+    <script src="/app/components/champion/championController.js"></script>
+    <script src="/app/components/champion/championService.js"></script>
     <script src="/app/components/shared/carousel/carouselDirective.js"></script>
     <script src="/app/components/shared/dialog/dialogDirective.js"></script>
 </body>
