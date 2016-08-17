@@ -13,27 +13,27 @@
     .config( configBlock )
     .run( runBlock );
 
-  runBlock.$inject = [ '$rootScope', '$state', 'UtilsConfigService', 'UtilsLogService', 'UtilsCookieService', 'UtilsLocalStorageService' ];
+  runBlock.$inject = [ '$rootScope', '$state', 'config', 'logger', 'cookie', 'localstorage' ];
   //config block
   function configBlock() {
 
   }
 
   //run block
-  function runBlock( $rootScope, $state, UtilsConfig, UtilsLog, UtilsCookie, UtilsLocalStorage ) {
+  function runBlock( $rootScope, $state, config, logger, cookie, localstorage ) {
     $rootScope.$state = $state;
 
-    UtilsLog.log( 'run' );
+    logger.log( 'run' );
 
-    var configSkinVersion = UtilsConfig.get( 'skinVersion' ),
-        currentSkinVersion = UtilsCookie.get( 'skinVersion' );
+    var configSkinVersion = config.get( 'skinVersion' ),
+        currentSkinVersion = cookie.get( 'skinVersion' );
 
-    UtilsLog.log( 'configSkinVersion :' + configSkinVersion );
-    UtilsLog.log( 'currentSkinVersion :' + currentSkinVersion );
+    logger.log( 'configSkinVersion :' + configSkinVersion );
+    logger.log( 'currentSkinVersion :' + currentSkinVersion );
 
-    if( configSkinVersion !== currentSkinVersion && UtilsLocalStorage.get( 'skins' ) !== null ) {
-      UtilsLocalStorage.remove( 'skins' );
-      UtilsCookie.set( 'skinVersion', configSkinVersion );
+    if( configSkinVersion !== currentSkinVersion && localstorage.get( 'skins' ) !== null ) {
+      localstorage.remove( 'skins' );
+      cookie.set( 'skinVersion', configSkinVersion );
     }
   }
 })();

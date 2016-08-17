@@ -5,12 +5,12 @@
     .module( 'app')
     .controller( 'MainController', MainController );
 
-  MainController.$inject = [ 'UtilsConfigService', 'UtilsLogService', 'MainService' ];
+  MainController.$inject = [ 'config', 'MainService' ];
 
-  function MainController( UtilsConfig, UtilsLog, MainService ) {
+  function MainController( config, MainService ) {
     var _this = this,
-        skinVersion = UtilsConfig.get( 'skinVersion' ),
-        spellVersion = UtilsConfig.get( 'spellVersion' );
+        skinVersion = config.get( 'skinVersion' ),
+        spellVersion = config.get( 'spellVersion' );
 
     _this.skinUrl = MainService.getSkinUrl( skinVersion );
     _this.spellVersion = MainService.getSpellUrl( spellVersion );

@@ -3,31 +3,33 @@
 
   angular
     .module( 'utils.localstorage', [])
-    .service( 'UtilsLocalStorageService', UtilsLocalStorageService );
+    .factory( 'localstorage', localstorage );
 
-  function UtilsLocalStorageService() {
-    var _this = this;
+  function localstorage() {
+    var services = {
+      get : get,
+      set : set,
+      remove : remove
+    };
 
-    _this.get = get;
-    _this.set = set;
-    _this.remove = remove;
-  }
+    return services;
 
-  function get( key ) {
-    return localStorage.getItem( key );
-  }
-
-  function set( key, value ) {
-    var str = Array.isArray( value ) ? JSON.stringify( value ) : value;
-
-    if(localStorage.key( key )) {
-        localStorage.removeItem( key );
+    function get( key ) {
+      return localStorage.getItem( key );
     }
 
-    localStorage.setItem( key, str );
-  }
+    function set( key, value ) {
+      var str = Array.isArray( value ) ? JSON.stringify( value ) : value;
 
-  function remove( key ) {
-    localStorage.removeItem( key );
+      if(localStorage.key( key )) {
+          localStorage.removeItem( key );
+      }
+
+      localStorage.setItem( key, str );
+    }
+
+    function remove( key ) {
+      localStorage.removeItem( key );
+    }  
   }
 })( window );

@@ -10,6 +10,8 @@
   function HomeController( $scope, $compile, getSkin ) {
     var _this = this;
 
+    console.log( 'getSkin' );
+
     _this.items = getSkin;
     _this.skinId = null;
     _this.selectedTitle = '';

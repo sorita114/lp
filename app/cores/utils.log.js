@@ -5,13 +5,19 @@
     .module( 'utils.log', [
       'utils.config'
     ])
-    .service( 'UtilsLogService', UtilsLogService );
+    .factory( 'logger', logger );
 
-  UtilsLogService.$inject = [ 'UtilsConfigService' ];
+  logger.$inject = [ 'config' ];
 
-  function UtilsLogService( UtilsConfig ) {
-    this.log = function( obj ) {
-      var useLog = UtilsConfig.get( 'useLog' ) === true && window.console !== undefined;
+  function logger( config ) {
+    var services = {
+      log : log
+    };
+
+    return services;
+    
+    function log( obj ) {
+      var useLog = config.get( 'useLog' ) === true && window.console !== undefined;
 
       if( useLog ) {
         if( typeof obj === 'object' && console.dir !== undefined ) {

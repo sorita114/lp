@@ -25,17 +25,17 @@
       controller : 'HomeController',
       controllerAs : 'homeCtrl',
       resolve : {
-        getSkin : function( HomeService, UtilsConfigService, UtilsLogService, UtilsCookieService, UtilsLocalStorageService ) {
+        getSkin : function( api, config, cookie, localstorage ) {
 
-          var skins = UtilsLocalStorageService.get( 'skins' ),
+          var skins = localstorage.get( 'skins' ),
               promise = null;
 
           if( skins === null ) {
-            promise = HomeService.getSkin();
+            promise = api.get( '/api/skins' );
 
             promise.then( function( resData ) {
-              UtilsLocalStorageService.set( 'skins', resData );
-              UtilsCookieService.set( 'skinVersion', UtilsConfigService.get( 'skinVersion' ) );
+              localstorage.set( 'skins', resData );
+              cookie.set( 'skinVersion', config.get( 'skinVersion' ) );
             });
             return promise;
           } else {

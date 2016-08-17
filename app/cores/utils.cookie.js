@@ -3,16 +3,18 @@
 
   angular
     .module( 'utils.cookie', [])
-    .service( 'UtilsCookieService', UtilsCookieService );
+    .factory( 'cookie', cookie );
 
-  function UtilsCookieService() {
-    var _this = this;
+  function cookie() {
+    var services = {
+      get : get,
+      set : set,
+      remove : remove,
+      has : has,
+      keys : keys
+    };
 
-    _this.get = get;
-    _this.set = set;
-    _this.remove = remove;
-    _this.has = has;
-    _this.keys = keys;
+    return services;
 
     function get( key ) {
       if( !key ) {
@@ -60,7 +62,7 @@
     }
 
     function remove( key, path, domain ) {
-      if( !_this.has( key ) ) {
+      if( !cookie.has( key ) ) {
         return false;
       }
       path = path === undefined ? '/' : path;

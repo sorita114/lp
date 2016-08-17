@@ -13,9 +13,9 @@
       spellVersion : { editable : true, value : '6.16.2' }
     })
     .run( runBlock )
-    .service( 'UtilsConfigService', UtilsConfigService );
+    .factory( 'config', config );
 
-  UtilsConfigService.$inject = [ '_defaults' ];
+  config.$inject = [ '_defaults' ];
 
   function runBlock() {
     if( !window.console ) {
@@ -27,10 +27,14 @@
     }
   }
 
-  function UtilsConfigService( _defaults ) {
-    this.get = get;
-    this.getAll = getAll;
-    this.set = set;
+  function config( _defaults ) {
+    var services = {
+      get : get,
+      getAll : getAll,
+      set : set
+    };
+
+    return services;
 
     function get( key ) {
       if( key === undefined ) {

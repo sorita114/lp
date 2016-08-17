@@ -46,29 +46,6 @@ router.get( '/' , function( req, res ) {
 });
 
 // more routes for our API will happen here
-
-// on routes that end in /champion
-// -----------------------------------------------------------------------------------------
-router.get( '/champions' , function( request , response ) {
-  var url = apiDomain + '/' + languageCode + '/' + apiVersion + '/champion?api_key=' + appkey;
-
-  https.get( url , function( res ){
-      var chunks = '';
-
-      res.on( 'data' , function( d ) {
-
-          chunks = chunks + d;
-
-      }).on( 'end' , function() {
-
-          response.json( JSON.parse( chunks ) );
-      });
-
-  }).on( 'error' , function( e ) {
-      console.log( 'Get champions error : ' , e );
-  });
-});
-
 router.get( '/champion/:id' , function( request , response ) {
   var id = request.params.id,
       url = apiDomain + '/' + languageCode + '/' + apiVersion + '/champion/' + id + '?champData=all&api_key=' + appkey;
