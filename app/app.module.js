@@ -6,6 +6,7 @@
     .module( 'app' , [
       'utils.config',
       'utils.log',
+      'utils.cookie',
       'app.router'
     ])
     .config( configBlock )
